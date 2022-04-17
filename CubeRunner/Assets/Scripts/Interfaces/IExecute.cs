@@ -1,0 +1,7 @@
+namespace CubeRunner.Interfaces
+{
+    public interface IExecute
+    {
+        public void Execute();
+    }
+}
