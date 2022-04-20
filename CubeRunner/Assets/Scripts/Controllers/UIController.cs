@@ -25,15 +25,15 @@ namespace CubeRunner.Controllers
         private void CanvasUpdate()
         {
             _onCanvasEnabled = OnCanvasEnabled;
-            for (var i = 0; i <= _canvaces.Length; i++)
+/*            for (var i = 0; i <= _canvaces.Length; i++)
             {
                 if (_canvaces[i].name == LOOSE_CANVAS)
                 {
                     _canvaces[i].gameObject.SetActive(_onCanvasEnabled);
                 }
             }
-            
-            //_canvas.gameObject.SetActive(_onCanvasEnabled);
+*/            
+            _canvas.gameObject.SetActive(_onCanvasEnabled);
 
         }
 
