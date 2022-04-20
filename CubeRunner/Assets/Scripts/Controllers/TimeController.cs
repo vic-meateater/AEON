@@ -7,7 +7,7 @@ namespace CubeRunner.Controllers
     {
         public void Execute()
         {
-            
+            //Debug.Log(Time.timeSinceLevelLoad);
         }
     }
 }
