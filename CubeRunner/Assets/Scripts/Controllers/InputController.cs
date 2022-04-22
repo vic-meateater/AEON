@@ -21,12 +21,17 @@ namespace CubeRunner.Controllers
         
         public void Execute()
         {
-            _player.Move(Input.GetAxis(HORIZONTAL),Y_AXIS,Input.GetAxis(VERTICAL));
             if (Input.GetKeyDown(_toMainMenuPress))
             {
                 Time.timeScale = 1;
                 SceneManager.LoadScene("MainMenu");
             }
         }
+
+        public void FixedExecute()
+        {
+            _player.Move(Input.GetAxis(HORIZONTAL),Y_AXIS,Input.GetAxis(VERTICAL));
+        }
+        
     }
 }

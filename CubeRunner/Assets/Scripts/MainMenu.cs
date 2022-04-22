@@ -20,6 +20,6 @@ public class MainMenu : MonoBehaviour
     
     private void ShowScores()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("In Progress");
     }
 }

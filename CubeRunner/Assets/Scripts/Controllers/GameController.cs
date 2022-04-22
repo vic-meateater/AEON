@@ -26,12 +26,13 @@ public class GameController : MonoBehaviour
     
     private void FixedUpdate()
     {
-        _inputController.Execute();
+        _inputController.FixedExecute();
         
     }
 
     private void Update()
     {
+        _inputController.Execute();
         _timeController.Execute();
         _playerController.Execute();
         _uiController.Execute();
