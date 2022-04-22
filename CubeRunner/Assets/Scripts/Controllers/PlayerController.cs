@@ -1,7 +1,4 @@
-using System;
 using CubeRunner.Interfaces;
-using TMPro.EditorUtilities;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace CubeRunner.Controllers
@@ -12,27 +9,31 @@ namespace CubeRunner.Controllers
         const int FAIL_LAYER = 9;
         
         private PlayerBase _player;
-        private UIController _canvas;
+        private UIController _ui;
 
-        public PlayerController(PlayerBase player, UIController canvas)
+        public PlayerController(PlayerBase player, UIController ui)
         {
             _player = player;
-            _canvas = canvas;
-            
+            _ui = ui;
             _player.OnLevelObjectContact += OnLevelObjectContact;
         }
 
         private void OnLevelObjectContact(Collider obj)
         {
-            if (obj.gameObject.layer == FINISH_LAYER) Debug.Log("FINISH!!!");
+            if (obj.gameObject.layer == FINISH_LAYER)
+            {
+                _ui.OnWinCanvasEnabled = true;
+                Time.timeScale = 0f;
+                Debug.Log("FINISH!!!");
+            }
             if (obj.gameObject.layer == FAIL_LAYER)
             {
-                _canvas.OnCanvasEnabled = true;
-                Time.timeScale = 0;
+                _ui.OnLooseCanvasEnabled = true;
+                Time.timeScale = 0f;
+                GameObject.Destroy(obj);
                 Debug.Log("--------------------------------FAIL!!!");
             }
         }
-        
         
         public void Execute()
         {

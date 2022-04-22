@@ -6,7 +6,8 @@ public class GameController : MonoBehaviour
 {
     
     [SerializeField] private PlayerBase _player;
-    [SerializeField] private Canvas _canvas;
+    [SerializeField] private GameObject _winPanel;
+    [SerializeField] private GameObject _loosePanel;
     
     private UIController _uiController;
     private InputController _inputController;
@@ -16,10 +17,10 @@ public class GameController : MonoBehaviour
 
     private void Awake()
     {
-        _uiController = new UIController(_canvas);
+        _timeController = new TimeController();
+        _uiController = new UIController(_winPanel, _loosePanel, _timeController);
         _inputController = new InputController(_player);
         _playerController = new PlayerController(_player, _uiController);
-        _timeController = new TimeController();
     }
 
     

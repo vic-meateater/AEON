@@ -1,5 +1,6 @@
 using CubeRunner.Interfaces;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace CubeRunner.Controllers
 {
@@ -8,8 +9,10 @@ namespace CubeRunner.Controllers
         
         const string HORIZONTAL = "Horizontal";
         const string VERTICAL = "Vertical";
+        const float Y_AXIS = 0.0f;
         
         private PlayerBase _player;
+        private KeyCode _toMainMenuPress = KeyCode.Escape;
 
         public InputController(PlayerBase player)
         {
@@ -18,7 +21,12 @@ namespace CubeRunner.Controllers
         
         public void Execute()
         {
-            _player.Move(Input.GetAxis(HORIZONTAL),0.0f,Input.GetAxis(VERTICAL));
+            _player.Move(Input.GetAxis(HORIZONTAL),Y_AXIS,Input.GetAxis(VERTICAL));
+            if (Input.GetKeyDown(_toMainMenuPress))
+            {
+                Time.timeScale = 1;
+                SceneManager.LoadScene("MainMenu");
+            }
         }
     }
 }

@@ -5,9 +5,10 @@ namespace CubeRunner.Controllers
 {
     public sealed class TimeController : IExecute
     {
+        public float GetTime { get; private set; }
         public void Execute()
         {
-            //Debug.Log(Time.timeSinceLevelLoad);
+            GetTime = Time.timeSinceLevelLoad;
         }
     }
 }
